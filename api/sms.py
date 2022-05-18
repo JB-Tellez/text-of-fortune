@@ -4,6 +4,19 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 
 class handler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        resp = MessagingResponse()
+
+        resp.message("ok then")
+
+        message = str(resp)
+
+        self.send_response(200)
+        self.send_header("Content-type", "text/plain")
+        self.end_headers()
+
+        self.wfile.write(message.encode())
+
     def do_GET(self):
         s = self.path
         url_components = parse.urlsplit(s)
