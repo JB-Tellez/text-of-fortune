@@ -19,12 +19,12 @@ class handler(BaseHTTPRequestHandler):
 
         resp = MessagingResponse()
 
-        resp.message = message
+        resp.message(message)
 
-        return str(resp)
+        message = str(resp)
 
-        # self.send_response(200)
-        # self.send_header('Content-type', 'text/plain')
-        # self.end_headers()
+        self.send_response(200)
+        self.send_header("Content-type", "text/plain")
+        self.end_headers()
 
-        # self.wfile.write(message.encode())
+        self.wfile.write(message.encode())
