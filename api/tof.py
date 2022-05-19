@@ -2,6 +2,8 @@ from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import json
 
+from api.pygirl2 import game_turn, start_game
+
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -11,20 +13,12 @@ class handler(BaseHTTPRequestHandler):
         dic = dict(query_string_list)
 
         if dic.get("id"):
-            game_data = {
-                "id": int(dic["id"]),
-                "used": "xyz",
-                "status": "incorrect",
-                "working_word": "_ _ t _ _",
-            }
+            id_ = int(dic["id"])
+            guess = dic["guess"]
+            guesses = dic.get("guesses","")
+            game_data = game_turn(id_, guess, guesses)
         else:
-            game_data = {
-                "id": 1,
-                "used": "",
-                "status": "start",
-                "working_word": "_ _ _ _ _",
-                "guesses": "",
-            }
+            game_data = start_game()
 
         message = json.dumps(game_data)
 
