@@ -40,8 +40,9 @@ def game_turn(id_, guessed_letter, used_letters):
     return game_data
 
 '''
+Game 1
 
-Guess a letter or solve the word
+Guess a letter
 
 _ _ _ _ _
 
@@ -61,6 +62,11 @@ Incorrect guesses:
 Guesses left: 6
 '''
 
+
+# TODO Back End 
+# 1 - Randomize word selection
+# 2 - Victory
+# 3 - Defeat
 
 
 def game_turn_old(id_, guessed_letter, used_letters):
